@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='enter_details.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+        
+    </header>
+    <div class="container">
+        <h1>Enter Your Details</h1>
+        <form action="{{ url_for('enter_details') }}" method="POST">
+            <input type="hidden" name="flight_id" value="{{ flight_id }}">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="card_details">Card Details:</label>
+            <input type="text" id="card_details" name="card_details" required>
+            <p><strong>Flight Details:</strong></p>
+            <p>Source: {{ source }}</p>
+            <p>Destination: {{ destination }}</p>
+            <p>Price: ₹{{ price }}</p>
+            <button type="submit">Confirm Booking</button>
+        </form>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='book_now.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+        <div class="top-right-buttons">
+            <button onclick="location.href='{{ url_for('index') }}'">Home</button>
+        </div>
+    </header>
+    <div class="container flight-table-container">
+        <h1>Available Flights</h1>
+        <table class="flight-table">
+            <thead>
+                <tr>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Price</th>
+                    <th>Book Now</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if flights %}
+                    {% for flight in flights %}
+                    <tr>
+                        <td>{{ flight['source'] }}</td>
+                        <td>{{ flight['destination'] }}</td>
+                        <td>₹{{ flight['price'] }}</td>
+                        <td>
+                            <a href="#" class="book-now-btn" 
+                               onclick="bookFlight('{{ flight['flight_id'] }}', '{{ flight['source'] }}', '{{ flight['destination'] }}', '{{ flight['price'] }}')">
+                               Book Now
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="4">No flights available.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function bookFlight(flightId, source, destination, price) {
+            console.log("Flight ID:", flightId); // Log the flight ID
+            // Redirect to enter details page with flight details and ID as query parameters
+            window.location.href = "{{ url_for('enter_details') }}" + `?flight_id=${flightId}&source=${source}&destination=${destination}&price=${price}`;
+        }
+    </script>
+</body>
+</html>

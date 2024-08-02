@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Ensure body takes full height of viewport */
+    font-family: 'Raleway', sans-serif;
+    background: url('{{ url_for('static', filename='destination1.jpeg') }}') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff; /* White text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container {
+    background: #fff; /* White background for the box */
+    color: #000; /* Black text */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 600px;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.back-home-btn {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    border-radius: 25px; /* Pill shape */
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.back-home-btn:hover {
+    background-color: #333; /* Darker shade on hover */
+}
